@@ -1,0 +1,66 @@
+body {
+    height: 100%;
+    width: 100%;
+    background: conic-gradient(
+        #f8ffcf 90deg,
+        #eaff00 90deg 180deg,
+        #f8ffcf 180deg 270deg,
+        #eaff00 270deg
+    );
+    background-repeat: repeat;
+    background-size: 140px 140px;
+    background-position: top left;
+}
+
+h1 {
+    font-family: "lucida handwriting";
+    font-size: 130px;
+    text-align: center;
+}
+
+.form-group-pass {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:50px auto;
+}
+
+.form-group-user {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:50px auto;
+}
+
+.form_input_user {
+    font-size: large;
+    height: 40px;
+    width: 550px;
+}
+
+.form_input_pass {
+    font-size: large;
+    height: 40px;
+    width: 550px;
+}
+
+.submit-btns {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:50px auto;
+}
+
+.login-btn {
+    font-size: 40px;
+    color: white;
+    background-color: green;
+    margin: 10px;
+}
+
+.register-btn {
+    font-size: 40px;
+    margin: 10px;
+    color: white;
+    background-color: green;
+}

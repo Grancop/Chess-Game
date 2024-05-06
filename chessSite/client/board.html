@@ -5,65 +5,63 @@
             Chess Game
         </title>
 
-        <link rel="stylesheet" type="text/css" href="/client/css/style.css">
-        <link rel="stylesheet" type="text/css" href="/client/css/login.css">
+        <link rel="stylesheet" type="text/css" href="/client/css/board.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="/client/js/config.js"></script>
-        <script src='/client/js/board.js' async></script>
+
     </head>
 
     <body>
 
-        <header class="header">
-            <section class="relative text-center">
-              <div class="container">
-                <div class="text-center">
-                  <h1 class='title'><span class='text-bold'>Board will go here</span></h1>
-                </div>
-              </div>
-            </section>
-          </header>
-
+      <div>
           <!-- Page Content-->
           <div id="menu-items" class="menu-items"></div>
-          <div id="router_button" class="btn-group-variant config-buttons">
-            <a href="/login" id="write-router" class="btn btn-sm edit_btn">Back to Login</a>
-          </div>
 
           <main class="page-content">
             <section id="libraryConfig_section" class="section section-inset-1 ">
                 <div class="container libraryForm">
                     <div class="row">
-                        <form id="config_form">
-                          <div class="form-group">
-                            <label class='form_med' for="mmcode">Match Making Code:</label>
-                            <input type="text" id="mmcode" name="mmcode" class="form-control form_md form_input" size='60'>
-                        </div>
-                        </form>
                     </div>
                     <div id="save_button" class="btn-group-variant config-buttons">
-                      <button id="Test-User" class="btn btn-sm edit_btn">Test</button>
+                      <label class='form_mm' for="mmcode">Match Making Code:</label>
+                      <input type="text" id="mmcode" name="mmcode" class="form-control form_md form_input" size='60'>
+                        <button id="Test-User" class="join-room-btn">Join Room</button>
                     </div>
                 </div>
+                <column class="game-btns-clmn">
+                  <div class="game-btns">
+                    <button id="Test-User" class="game-btn">Forfeit</button>
+                  </div>
+                  <div class="game-btns">
+                    <button id="Test-User" class="game-btn" onclick="logout()">Logout</button>
+                  </div>
+                </column>
+
+
+<div class="form-popup" id="myForm">
+  <form class="form-container">
+    <h1>Promote To:</h1>
+
+    <button type="button" class="btn" onclick="closeForm('Q')">
+      <img src="/client/images/white_queen.png"/>
+    </button>
+    <button type="button" class="btn" onclick="closeForm('R')">
+      <img src="/client/images/white_rook.png"/>
+    </button>
+    <button type="button" class="btn" onclick="closeForm('N')">
+      <img src="/client/images/white_horse.png"/>
+    </button>
+    <button type="button" class="btn" onclick="closeForm('B')">
+      <img src="/client/images/white_bishop.png"/>
+    </button>
+  </form>
+</div>
             </section>
         </main>
 
         <script src="/socket.io/socket.io.js"></script>
-        <script>
-        var socket = io();
-
-        var testRoom = document.getElementById('Test-User');
-
-        testRoom.addEventListener('click', () => {
-          var mmcode = $('#mmcode').val();
-
-          if(mmcode) {
-            socket.emit('join-room', mmcode);
-          } else {
-            socket.emit('join-room', 2000);
-          }
-        });
-    </script>
+        <script src='/client/js/chess.js' async></script>
+        <script src="/client/js/board.js"></script>
   </body>
 </html>

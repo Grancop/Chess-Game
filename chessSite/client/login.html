@@ -5,7 +5,6 @@
             Chess Game
         </title>
 
-        <link rel="stylesheet" type="text/css" href="/client/css/style.css">
         <link rel="stylesheet" type="text/css" href="/client/css/login.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,7 +18,7 @@
             <section class="relative text-center">
               <div class="container">
                 <div class="text-center">
-                  <h1 class='title'><span class='text-bold'>Enter login info</span></h1>
+                  <h1 class='title'><span class='text-bold'>Chess Game</span></h1>
                 </div>
               </div>
             </section>
@@ -27,28 +26,21 @@
 
           <!-- Page Content-->
           <div id="menu-items" class="menu-items"></div>
-          <div id="router_button" class="btn-group-variant config-buttons">
-            <a href="/board" id="write-router" class="btn btn-sm edit_btn">Test Board</a>
-          </div>
 
           <main class="page-content">
             <section id="libraryConfig_section" class="section section-inset-1 ">
                 <div class="container libraryForm">
                     <div class="row">
                         <form id="config_form">
-                            <div class="form-group">
-                                <label class='form_med' for="username">User Name:</label>
-                                <input type="text" id="username" name="username" class="form-control form_md form_input" size='60'>
+                            <div class="form-group-user">
+                                <input type="text" id="username" name="username" class="form-control form_md form_input_user" size='60' placeholder="Username..">
                             </div>
-                            <div class="form-group">
-                                <label class='form_med' for="password">Password:</label>
-                                <input type="text" id="password" name="password" class="form-control form_md form_input" size='60'>
+                            <div class="form-group-pass">
+                                <input type="text" id="password" name="password" class="form-control form_md form_input_pass" size='60' type="password" placeholder="Password..">
                             </div>
-                            <div id="save_button" class="btn-group-variant config-buttons">
-                                <button id="login-submit" class="btn btn-sm edit_btn">Login</button>
-                            </div>
-                            <div id="save_button" class="btn-group-variant config-buttons">
-                                <button id="register-submit" class="btn btn-sm edit_btn">Register</button>
+                            <div id="save_button" class="submit-btns">
+                                <button id="login-submit" class="login-btn">Login</button>
+                                <button id="register-submit" class="register-btn">Register</button>
                             </div>
                         </form>
                     </div>

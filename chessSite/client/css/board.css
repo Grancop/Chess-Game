@@ -1,0 +1,71 @@
+.chess-board { border-spacing: 0; border-collapse: collapse; }
+.chess-board th { padding: .5em; }
+.chess-board td { border: 1px solid; width: 5em; height: 5em; }
+.chess-board .light { background: #f8ffcf; }
+.chess-board .dark { background: #eaff00; }
+td img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.join-room-btn {
+  font-size: 40px;
+  color: white;
+  background-color: green;
+  margin: 10px;
+}
+
+.game-btn {
+  font-size: 40px;
+  color: white;
+  background-color: green;
+  margin: 10px;
+}
+
+.game-btns {
+  position: relative;
+      margin-top:-18px;
+      float:right;
+      right:-18px;
+      top:0px;
+}

@@ -1,5 +1,4 @@
 const path = require('path');
-const escapeHtml = require('escape-html');
 
 //Page listeners
 var router = function(app) {

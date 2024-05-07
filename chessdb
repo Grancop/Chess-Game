@@ -1,0 +1,79 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema chessdb
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `chessdb` ;
+
+-- -----------------------------------------------------
+-- Schema chessdb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `chessdb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `chessdb` ;
+
+-- -----------------------------------------------------
+-- Table `chessdb`.`player`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `chessdb`.`player` ;
+
+CREATE TABLE IF NOT EXISTS `chessdb`.`player` (
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`username`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `chessdb`.`savedgames`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `chessdb`.`savedgames` ;
+
+CREATE TABLE IF NOT EXISTS `chessdb`.`savedgames` (
+  `gameid` VARCHAR(150) NOT NULL,
+  `whiteWon` TINYINT NULL,
+  `oppUsername` VARCHAR(45) NOT NULL,
+  `playingWhite` TINYINT NOT NULL,
+  `player_username` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`gameid`, `player_username`),
+  INDEX `fk_savedgames_player1_idx` (`player_username` ASC) VISIBLE,
+  CONSTRAINT `fk_savedgames_player1`
+    FOREIGN KEY (`player_username`)
+    REFERENCES `chessdb`.`player` (`username`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `chessdb`.`moves`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `chessdb`.`moves` ;
+
+CREATE TABLE IF NOT EXISTS `chessdb`.`moves` (
+  `moveid` INT NOT NULL AUTO_INCREMENT,
+  `notation` VARCHAR(10) NOT NULL,
+  `savedgames_gameid` VARCHAR(150) NOT NULL,
+  PRIMARY KEY (`moveid`, `savedgames_gameid`),
+  INDEX `fk_moves_savedgames_idx` (`savedgames_gameid` ASC) VISIBLE,
+  CONSTRAINT `fk_moves_savedgames`
+    FOREIGN KEY (`savedgames_gameid`)
+    REFERENCES `chessdb`.`savedgames` (`gameid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
